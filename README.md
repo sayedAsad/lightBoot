@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Light Bootstrap Dashboard](http://www.creative-tim.com/product/light-bootstrap-dashboard)
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
@@ -85,3 +86,7 @@ Instagram: <https://instagram.com/creativetimofficial>
 [LICENSE]: ./LICENSE.md
 [version-badge]: https://img.shields.io/badge/version-1.4.0-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+=======
+In this project I have borken down some parts of it into php and I located those php files into phpAssets directory and each of these files are included into proposed project files.
+The parts that has been changed into php are : header,footer and sidebar of project.
+>>>>>>> 34465ddb941fdf4d06058d836ae130397ffb8a81
