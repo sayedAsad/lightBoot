@@ -36,7 +36,7 @@
 <div class="wrapper">
 	<?php $active= basename($_SERVER['PHP_SELF'],".php"); include('phpAssets/sidebar.php');?>
     <div class="main-panel">
-		<?php include('phpAssets/header.php'); getName("Maps");?>
+		<?php $head = 'Maps'; include('phpAssets/header.php');?>
 
         <div id="map"></div>
 

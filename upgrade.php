@@ -37,7 +37,7 @@
 	<?php $active= basename($_SERVER['PHP_SELF'],".php");  include('phpAssets/sidebar.php');?>
 
     <div class="main-panel">
-		<?php include('phpAssets/header.php'); getName("Upgrade");?>
+		<?php $head ='Upgrade'; include('phpAssets/header.php');?>
 
 
         <div class="content">

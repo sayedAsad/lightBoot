@@ -37,7 +37,7 @@
 	<?php $active= basename($_SERVER['PHP_SELF'],".php"); include('phpAssets/sidebar.php');?>
 
     <div class="main-panel">
-		<?php include('phpAssets/header.php'); getName("Notifications");?>
+		<?php $head = 'Notifications'; include('phpAssets/header.php');?>
 
         <div class="content">
             <div class="container-fluid">

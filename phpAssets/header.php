@@ -1,13 +1,13 @@
 <?php
 
+
 echo "<nav class='navbar navbar-default navbar-fixed'>
             <div class='container-fluid'>
 			
-                <div class='navbar-header'>";
+                <div class='navbar-header'>
 
-					function getName($name){echo "<a class='navbar-brand' href='#' style='color:gray;margin-top:-5%;position:absolute;'>$name</a>";}
-				
-           echo "<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#navigation-example-2'>
+			<a class='navbar-brand' href='#'>$head</a>				
+           <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#navigation-example-2'>
                         <span class='sr-only'>Toggle navigation</span>
                         <span class='icon-bar'></span>
                         <span class='icon-bar'></span>
@@ -16,7 +16,7 @@ echo "<nav class='navbar navbar-default navbar-fixed'>
 					</div>
 				
                 <div class='collapse navbar-collapse'>
-                    <ul class='nav navbar-nav navbar-left' style='margin-left:8%'>
+                    <ul class='nav navbar-nav navbar-left' >
                         <li>
                             <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
                                 <i class='fa fa-dashboard'></i>

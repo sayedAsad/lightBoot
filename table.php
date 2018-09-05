@@ -36,7 +36,7 @@
 	<?php $active= basename($_SERVER['PHP_SELF'],".php"); include('phpAssets/sidebar.php');?>
 
     <div class="main-panel">
-		<?php include('phpAssets/header.php'); getName("Table");?>
+		<?php $head = 'Table'; include('phpAssets/header.php');?>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
