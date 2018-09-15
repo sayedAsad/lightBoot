@@ -1,11 +1,13 @@
 <?php
 
+$user = $_SESSION['userID'];
+
 echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.jpg'>
 
     	<div class='sidebar-wrapper'>
             <div class='logo'>
-                <a href='http://www.creative-tim.com' class='simple-text'>
-                    Creative Tim
+                <a href='' class='simple-text'>
+                    Tiyan
                 </a>
             </div>
 
@@ -21,14 +23,14 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 					}
 					echo "'>
                     
-					<a href='dashboard.php'>
+					<a href='dashboard.php?user=$user'>
                         <i class='pe-7s-graph'></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 
 				<li class='";
-					if($active=="user")
+					if($active=="userview" || $active=="user")
 					{
 						echo 'active';
 					}
@@ -37,14 +39,14 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='user.php'>
+                    <a href='userview.php?user=$user'>
                         <i class='pe-7s-user'></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 
 				<li class='";
-					if($active=="table")
+					if($active=="pages" || $active=="addpage")
 					{
 						echo 'active';
 					}
@@ -53,14 +55,14 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='table.php'>
+                    <a href='pages.php?user=$user'>
                         <i class='pe-7s-note2'></i>
-                        <p>Table List</p>
+                        <p>Pages</p>
                     </a>
                 </li>
                 
 				<li class='";
-					if($active=="typography")
+					if($active=="postview" || $active=="posts")
 					{
 						echo 'active';
 					}
@@ -69,14 +71,13 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='typography.php'>
+                    <a href='postview.php?user=$user'>
                         <i class='pe-7s-news-paper'></i>
-                        <p>Typography</p>
+                        <p>Posts</p>
                     </a>
                 </li>
-               
-			   <li class='";
-					if($active=="icons")
+				<li class='";
+					if($active=="message")
 					{
 						echo 'active';
 					}
@@ -85,49 +86,28 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='icons.php'>
-                        <i class='pe-7s-science'></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-				
-                <li class='";
-					if($active=="maps")
-					{
-						echo 'active';
-					}
-					else
-					{
-						echo '';
-					}
-					echo "'>
-                    <a href='maps.php'>
-                        <i class='pe-7s-map-marker'></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-				
-                <li class='";
-					if($active=="notifications")
-					{
-						echo 'active';
-					}
-					else
-					{
-						echo '';
-					}
-					echo "'>
-                    <a href='notifications.php'>
+                    <a href='message.php?user=$user'>
                         <i class='pe-7s-bell'></i>
-                        <p>Notifications</p>
+                        <p>Messages</p>
                     </a>
                 </li>
-				<li class='active-pro'>
-                    <a href='upgrade.php'>
-                        <i class='pe-7s-rocket'></i>
-                        <p>Upgrade to PRO</p>
+                              
+			   <li class='";
+					if($active=="categoryList" || $active=="category")
+					{
+						echo 'active';
+					}
+					else
+					{
+						echo '';
+					}
+					echo "'>
+                    <a href='categoryList.php?user=$user'>
+                        <i class='pe-7s-science'></i>
+                        <p>Category</p>
                     </a>
                 </li>
+
             </ul>
     	</div>
     </div>";

@@ -1,3 +1,49 @@
+<?php
+
+//Sets the session and gets the user id.
+session_start();
+$Suser = $_SESSION['user'];
+
+$user = $_GET['user'];
+//connected to database.
+require_once("phpAssets/connect.php");
+
+
+//query for extract proposed user details.
+$query = mysqli_query($connect, "SELECT * FROM usertable WHERE user_id = $user");
+$fetch = mysqli_fetch_assoc($query);
+$firstName = $fetch['name'];
+$lname = $fetch['last_name']; 
+$jtitle = $fetch['job_title'];
+$username = $fetch['username'];
+$email = $fetch['email'];
+$pic = $fetch['profile_pic'];
+$status = $fetch['status'];
+$loginType = $fetch['login_type'];
+
+
+//form values for update
+if(isset($_POST['firstName']))
+{
+	$fName = $_POST['firstName'];
+	$lastname = $_POST['lname'];
+	$jobTitle = $_POST['jtitle'];
+	$uname = $_POST['username'];
+	$logType = $_POST['logType'];
+	$picture = $_FILES['picture']['name'];
+	
+	move_uploaded_file($_FILES["picture"]["tmp_name"],"images/".$picture);
+	$dir = "images/" . $picture;
+	
+	$query = mysqli_query($connect, "UPDATE usertable SET name='$fName', last_name='$lastname', job_title='$jobTitle', username='$uname', profile_pic='$dir', login_type=$logType WHERE user_id=$user");
+
+	if($query)
+		header("Location:user.php?success=done && user=$user");
+	else
+		header("Location:user.php?fail=done && user=$user");
+
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,11 +51,10 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>User profile</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
 
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,8 +66,9 @@
     <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
 
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
+		<script src="js/alertify.min.js"></script>
+		<link rel="stylesheet" href="css/alertify.core.css" />
+		<link rel="stylesheet" href="css/alertify.custom.css" id="toggleCSS" />
 
 
     <!--     Fonts and icons     -->
@@ -46,24 +92,24 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form action='' method='post' enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-5">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                                <label>First name</label>
+                                                <input type="text" name='firstName' class="form-control" value="<?php echo $firstName;?>">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <label>Last name</label>
+                                                <input type="text" name='lname' class="form-control" value="<?php echo $lname;?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <label>JOb title</label>
+                                                <input type="text" name='jtitle' class="form-control" value="<?php echo $jtitle;?>">
                                             </div>
                                         </div>
                                     </div>
@@ -71,82 +117,49 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <label>user name</label>
+                                                <input type="text" name='username' class="form-control" value="<?php echo $username;?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+										<div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                                            </div>
+                                                <label>Login as</label>
+												<select name='logType' class="form-control">
+													<option value="<?php echo $loginType;?>"><?php if($loginType==1){echo "<span style='color:green'>Admin</span>";}else{echo "<span style='color:green'>User</span>";}?></option>
+													<option value="">----------------------</option>
+													<option value="1">Admin</option>
+													<option value="0">User</option>
+												</select>
+											</div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
                                     <div class="clearfix"></div>
-                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card card-user">
                             <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                                <img src="images/pp.jpg" alt="..."/>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+									 
+							     	<input type='file' value="<?php echo $pic;?>" name='picture' id='pic2'  style='display:none'/>									 
+                                    <img class="avatar border-gray" src="<?php echo $pic;?>" id='preview2' onClick='get2();' style='cursor:pointer'/>
 
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
+                                      <h4 class="title"><?php echo $firstName ."&nbsp;". $lname;?><br />
+                                         <small><?php echo $username;?></small>
                                       </h4>
-                                    </a>
                                 </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
+								</form>
+                                <p class="description text-center"><?php echo $jtitle . "<br/>" ;
+									if($status==0) 
+										echo "<span style='font-weight:bold'>OFF LINE</span>";
+									else
+										echo "<span style='font-weight:bold;color:green'>ON LINE</span>"; ?>
+								</p>
                             </div>
                             <hr>
                             <div class="text-center">
@@ -161,6 +174,7 @@
                 </div>
             </div>
         </div>
+			<!-- page footer is included.-->
 			<?php include('phpAssets/footer.php');?>
 
     </div>
@@ -185,7 +199,62 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+<script type="text/javascript">
+	function get2()
+	{
+		document.getElementById('pic2').click();
+	}
+</script>
+<script>
 
+	$(document).ready(function()
+	{
+		//Real time view the picture that user want to upload.
+		$(function()
+		{
+			$("#pic2").change(function()
+			{
+				var reader = new FileReader();
+				reader.onload = function(e)
+				{
+
+					$('#preview2').attr('src',e.target.result);
+
+				}
+					reader.readAsDataURL(this.files[0]);
+
+			});
+		});
+	});
+</script>
+
+
+
+	
+<script>
+	function JSalert1(){
+	// successful submition of form
+	alertify.alert("<span style='color:#228B22'><b>Success!</b> Update successfuly done.</span>");
+	}
+	function JSalert2(){
+	// An error alert
+	alertify.alert("<span style='color:#DC143C'><b>Error</b>, Please try again!</span>");
+	}
+</script>
+
+<!-- Alert is called. -->
+<?php
+if(isset($_GET['success']))
+{
+?>
+<script>JSalert1();</script>
+<?php
+}
+if(isset($_GET['fail']))
+{
+?>
+<script>JSalert2();</script>
+<?php
+}
+?>
 </html>

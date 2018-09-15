@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+$user = $_SESSION['user'];
+
+if(!$user)
+{
+	header("Location:index.php");
+}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,7 +17,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>Admin panel</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -35,7 +47,7 @@
 
 <div class="wrapper">
     
-	<?php $active= basename($_SERVER['PHP_SELF'],".php");  include('phpAssets/sidebar.php');?>
+	<?php $active= basename($_SERVER['PHP_SELF'],".php"); include('phpAssets/sidebar.php');?>
     <div class="main-panel">
         
 	<?php $head = 'Dashboard';  include('phpAssets/header.php'); ?>

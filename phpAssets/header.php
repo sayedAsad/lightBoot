@@ -1,6 +1,5 @@
 <?php
 
-
 echo "<nav class='navbar navbar-default navbar-fixed'>
             <div class='container-fluid'>
 			
@@ -73,7 +72,7 @@ echo "<nav class='navbar navbar-default navbar-fixed'>
                               </ul>
                         </li>
                         <li>
-                            <a href='#'>
+                            <a href='logout.php?user=$user'>
                                 <p>Log out</p>
                             </a>
                         </li>
