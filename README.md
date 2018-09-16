@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Light Bootstrap Dashboard](http://www.creative-tim.com/product/light-bootstrap-dashboard)
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
@@ -85,3 +86,6 @@ Instagram: <https://instagram.com/creativetimofficial>
 [LICENSE]: ./LICENSE.md
 [version-badge]: https://img.shields.io/badge/version-1.4.0-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+=======
+The project has been completed and some small changes is required that i will make it as soon as possible.
+>>>>>>> d26c5095d980884d53af27b2fb2e04c98eff9447
