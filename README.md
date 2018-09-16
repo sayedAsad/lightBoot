@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # [Light Bootstrap Dashboard](http://www.creative-tim.com/product/light-bootstrap-dashboard)
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
@@ -86,6 +85,3 @@ Instagram: <https://instagram.com/creativetimofficial>
 [LICENSE]: ./LICENSE.md
 [version-badge]: https://img.shields.io/badge/version-1.4.0-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
-=======
-Some part of This project has broken down into php file , The parts that has been changed into php are : header , sidebar , footer .
->>>>>>> 31737aecbb3cc5b6485476903fa6013191de7bcf

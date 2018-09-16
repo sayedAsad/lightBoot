@@ -2,17 +2,15 @@
 
 //Sets the session and gets the user id.
 session_start();
-$user = $_GET['user'];
-$_SESSION['userID'] = $user;
+$user = $_SESSION['user'];
 $pid = $_GET['p'];
 
 //connected to database.
 require_once("phpAssets/connect.php");
 
 
-
 //Joined tables to get the required information.
-$query = "SELECT * FROM posts INNER JOIN usertable ON posts.user_id = usertable.user_id iNNER JOIN category ON posts.category = category.cat_id WHERE post_id=$pid";
+$query = "SELECT * FROM posts INNER JOIN usertable ON posts.user_id = usertable.user_id INNER JOIN category ON posts.category = category.cat_id WHERE post_id=$pid";
 $res = mysqli_query($connect,$query);
 $fetch = mysqli_fetch_assoc($res);
 
@@ -23,7 +21,6 @@ $jtitle = $fetch['job_title'];
 $username = $fetch['username'];
 $email = $fetch['email'];
 $pic = $fetch['profile_pic'];
-$status = $fetch['status'];
 $loginType = $fetch['login_type'];
 
 //fetches post details.
@@ -32,14 +29,14 @@ $pContent = $fetch['content'];
 $pImage = $fetch['image'];
 $pCat = $fetch['cat_name'];
 $pDate = $fetch['publish_date']; 
-$status = $fetch['status'];
+$pStatus = $fetch['pStatus'];
 
 if(isset($_POST['publish']))
 {
 	$pid = $_GET['p'];
-	$query = mysqli_query($connect,"UPDATE posts SET status=1 WHERE post_id=$pid");
+	$query = mysqli_query($connect,"UPDATE posts SET pStatus=1 WHERE post_id=$pid");
 	if($query)
-		header("Location:postview.php?user=$user && post=success");
+		header("Location:postview.php?post=success");
 }
 
 if(isset($_POST['delete']))
@@ -47,7 +44,7 @@ if(isset($_POST['delete']))
 	$pid = $_GET['p'];
 	$query = mysqli_query($connect,"DELETE FROM posts WHERE post_id=$pid");
 	if($query)
-		header("Location:postview.php?user=$user && delete=success");
+		header("Location:postview.php?delete=success");
 }
 
 ?>
@@ -139,7 +136,8 @@ if(isset($_POST['delete']))
                                     </a>
                                 </div>
                                 <p class="description text-center"><?php echo $jtitle . "<br/>" ;
-									if($status==0) 
+									$uStatus = $fetch['status'];
+									if($uStatus==0) 
 										echo "<span style='font-weight:bold'>OFF LINE</span>";
 									else
 										echo "<span style='font-weight:bold;color:green'>ON LINE</span>"; ?>

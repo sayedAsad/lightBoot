@@ -63,7 +63,7 @@ $fetch = mysqli_fetch_assoc($res);
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Posts list<a href='posts.php?user=<?php echo $user;?>'><span class='pull-right' style='font-size:0.8em;color:green'>New post +</span></a></h4>
+                                <h4 class="title">Posts list<a href='posts.php'><span class='pull-right' style='font-size:0.8em;color:green'>New post +</span></a></h4>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -93,7 +93,7 @@ $fetch = mysqli_fetch_assoc($res);
 												
 											echo "<tr>
 													<td>$id</td>
-													<td><a href='showpost.php?p=$id && user=$user'>$title</a></td>
+													<td><a href='showpost.php?p=$id'>$title</a></td>
 													<td>$content</td>
 													<td>$cat</td>
 													<td><img src='$pic' width='80px' height='80px' alt='page image'></td>

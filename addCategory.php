@@ -1,7 +1,21 @@
 <?php
 
+//Session started.
+session_start();
+
+//Gets user id by session.
+$user = $_SESSION['user'];
+
+//Checks if session is used.
+if(!$user)
+{
+	header("Location:index.php");
+}
+
+//Connected to database.
 $con = include("phpAssets/connect.php");
 
+//user details is required.
 $query = "SELECT * FROM usertable";
 $res = mysqli_query($connect,$query);
 $fetch = mysqli_fetch_assoc($res);

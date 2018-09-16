@@ -17,22 +17,22 @@ $fetch = mysqli_fetch_assoc($select);
 if(isset($_POST['title']))
 {
 
-//Gets the form values to insert into pages table.
-$title = $_POST['title'];
-$desc = $_POST['desc'];
-$pic = $_FILES['pic']['name'];
-$cat = $_POST['cat'];
-$status = $_POST['status'];
-$date = $_POST['date'];
-move_uploaded_file($_FILES["pic"]["tmp_name"],"images/".$pic);
-$dir = "images/".$pic;
+	//Gets the form values to insert into pages table.
+	$title = $_POST['title'];
+	$desc = $_POST['desc'];
+	$pic = $_FILES['pic']['name'];
+	$cat = $_POST['cat'];
+	$status = $_POST['status'];
+	$date = $_POST['date'];
+	move_uploaded_file($_FILES["pic"]["tmp_name"],"images/".$pic);
+	$dir = "images/".$pic;
 
-$query = mysqli_query($connect,"INSERT INTO pages(page_id, p_title, status, p_content, pic, p_category,date)
-											VALUES(NULL, '$title', '$status', '$desc', '$dir', $cat, '$date')");
-if($query)
-	header("Location:addpage.php?success=done && user=$user");
-else
-	header("Location:addpage.php?fail=done && user=$user");
+	$query = mysqli_query($connect,"INSERT INTO pages(page_id, p_title, status, p_content, pic, p_category,date)
+												VALUES(NULL, '$title', '$status', '$desc', '$dir', $cat, '$date')");
+		if($query)
+			header("Location:addpage.php?success=done && user=$user");
+		else
+			header("Location:addpage.php?fail=done && user=$user");
 
 }
 
@@ -189,25 +189,28 @@ else
 
 <script>	
 
-//Gets the current date.
-var date = new Date();
-var y = date.getFullYear();
-var m = date.getMonth();
-var d = date.getDay();
-var h = date.getHours();
-var min = date.getMinutes();
-var s = date.getSeconds();
-document.getElementById("autoDate").value = y + " - " + m + " - " + d + " / " + h + " : " + min + " : " + s;
+	//Gets the current date.
+	var date = new Date();
+	var y = date.getFullYear();
+	var m = date.getMonth();
+	var d = date.getDay();
+	var h = date.getHours();
+	var min = date.getMinutes();
+	var s = date.getSeconds();
+	document.getElementById("autoDate").value = y + " - " + m + " - " + d + " / " + h + " : " + min + " : " + s;
+
 </script>	
 <script>
-// successful submition of form	
-function JSalert1(){
-alertify.alert("<span style='color:#228B22'><b>Success!</b> Page created successfuly.</span>");
-}
-// An error alert
-function JSalert2(){
-alertify.alert("<span style='color:#DC143C'><b>Error</b>, Please try again!</span>");
-}
+	// successful submition of form	
+	function JSalert1()
+	{
+		alertify.alert("<span style='color:#228B22'><b>Success!</b> Page created successfuly.</span>");
+	}
+	// An error alert
+	function JSalert2()
+	{
+		alertify.alert("<span style='color:#DC143C'><b>Error</b>, Please try again!</span>");
+	}
 
 </script>
 

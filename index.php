@@ -2,9 +2,27 @@
 
 session_start();
 require_once("phpAssets/connect.php");
-if(isset($_POST['username']))
+
+if(isset($_SESSION['user']))
 {
+	$getinfo = mysqli_query($connect,"SELECT user_id, login_type FROM usertable WHERE user_id=".$_SESSION['user']);
+	$count = mysqli_num_rows($getinfo);
+	$fetch = mysqli_fetch_assoc($getinfo);
 	
+	$radio2 = $fetch['login_type'];
+
+	if($radio2==1)
+	{
+		header("Location:dashboard.php");
+	}
+	elseif($radio2==0)
+	{
+		header("Location:userIndex.php");
+	}	
+	exit();	
+}
+if(isset($_POST['username']))
+{	
 $username = $_POST['username'];
 $pass = $_POST['pass'];
 $radio1 = $_POST['radio'];
@@ -38,10 +56,6 @@ else
 	header("Location:index.php?failed = done");
 }
 
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,6 +85,7 @@ else
     </head>
 
     <body>
+	
 		<!-- Top menu -->
 		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">

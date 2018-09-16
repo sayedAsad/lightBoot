@@ -2,8 +2,8 @@
 
 //Session set and gets user id.
 session_start();
-$user = $_GET['user'];
-$_SESSION['userID'] = $user;
+$user = $_SESSION['user'];
+//$_SESSION['userID'] = $user;
 
 //connected to database.
 require_once('phpAssets/connect.php');
@@ -32,9 +32,9 @@ $query = mysqli_query($connect,"INSERT INTO posts(post_id, title, content, image
 	
 
 if($query)
-	header("Location:posts.php?success=done && user=$user");
+	header("Location:posts.php?success=done");
 else
-	header("Location:posts.php?fail=done && user=$user");
+	header("Location:posts.php?fail=done");
 
 
 	

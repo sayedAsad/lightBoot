@@ -1,24 +1,25 @@
 <?php
 
+//Session is started.
 session_start();
 $user = $_SESSION['user'];
 
+//connected to database.
 require_once('phpAssets/connect.php');
+
 
 if(isset($_POST['cat_name']))
 {
+	$name = $_POST['cat_name'];
+	$slug = $_POST['slug'];
+	$status = $_POST['status'];
 
-$name = $_POST['cat_name'];
-$slug = $_POST['slug'];
-$status = $_POST['status'];
-
-
-$query = mysqli_query($connect, "INSERT INTO category(cat_id,cat_name,slug,status) 
+	$query = mysqli_query($connect, "INSERT INTO category(cat_id,cat_name,slug,status) 
 											VALUES(NULL, '$name', '$slug', '$status')");
-if($query)
-	header("Location:category.php?success=done");
-else
-	header("Location:category.php?fail=done");
+		if($query)
+			header("Location:category.php?success=done");
+		else
+			header("Location:category.php?fail=done");
 }
 ?>
 <!doctype html>

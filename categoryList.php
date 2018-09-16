@@ -1,12 +1,13 @@
 <?php
 
+//Session is started.
 session_start();
 $user = $_SESSION['user'];
 
-
-
+//Connected to database.
 $con = include("phpAssets/connect.php");
 
+//Fetches category details.
 $query = "SELECT * FROM category";
 $res = mysqli_query($connect,$query);
 $fetch = mysqli_fetch_assoc($res);
@@ -76,14 +77,6 @@ $fetch = mysqli_fetch_assoc($res);
 													<td>$name</td>
 													<td>$slug</td>
 													<td>$status</td>
-													<td class='td-actions text-right'>
-													<button type='button' rel='tooltip' title='Edit Task' class='btn btn-info btn-simple btn-xs'>
-                                                        <i class='fa fa-edit'></i>
-                                                    </button>
-                                                    <button type='button' rel='tooltip' title='Remove' class='btn btn-danger btn-simple btn-xs'>
-                                                        <i class='fa fa-times'></i>
-                                                    </button>
-													</td>
 												</tr>";
 											}while($fetch = mysqli_fetch_assoc($res));
 										?>
