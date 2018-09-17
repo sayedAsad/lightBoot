@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Light Bootstrap Dashboard](http://www.creative-tim.com/product/light-bootstrap-dashboard)
 [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
@@ -85,3 +86,9 @@ Instagram: <https://instagram.com/creativetimofficial>
 [LICENSE]: ./LICENSE.md
 [version-badge]: https://img.shields.io/badge/version-1.4.0-blue.svg
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+=======
+<h1>Project completed!</h1>
+In this index.php is considered as login page
+and dashboard.php is the first page of admin
+and userIndex.php is the first page of user
+>>>>>>> 462dbe603b2aa4019560a9c630e0effa596a09ff
