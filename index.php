@@ -5,56 +5,50 @@ require_once("phpAssets/connect.php");
 
 if(isset($_SESSION['user']))
 {
-	$getinfo = mysqli_query($connect,"SELECT user_id, login_type FROM usertable WHERE user_id=".$_SESSION['user']);
-	$count = mysqli_num_rows($getinfo);
+	$user = $_SESSION['user'];
+	$getinfo = mysqli_query($connect,"SELECT user_id, login_type FROM usertable WHERE user_id=$user");
 	$fetch = mysqli_fetch_assoc($getinfo);
-	
-	$radio2 = $fetch['login_type'];
-
-	if($radio2==1)
-	{
+	$lType= $fetch['login_type'];
+	if($lType == 1)
 		header("Location:dashboard.php");
-	}
-	elseif($radio2==0)
-	{
+	elseif($lType==0)
 		header("Location:userIndex.php");
-	}	
-	exit();	
-}
+}	
 if(isset($_POST['username']))
 {	
-$username = $_POST['username'];
-$pass = $_POST['pass'];
-$radio1 = $_POST['radio'];
+	$username = $_POST['username'];
+	$pass = $_POST['pass'];
+	$radio1 = $_POST['radio'];
 
-$getinfo = mysqli_query($connect,"SELECT user_id, username, password, login_type FROM usertable WHERE username='$username' AND password = '$pass'");
-$count = mysqli_num_rows($getinfo);
-$fetch = mysqli_fetch_assoc($getinfo);
+	$getinfo = mysqli_query($connect,"SELECT user_id, username, password, login_type FROM usertable WHERE username='$username' AND password = '$pass'");
+	$count = mysqli_num_rows($getinfo);
+	$fetch = mysqli_fetch_assoc($getinfo);
 
-	$radio2 = $fetch['login_type'];
-	$_SESSION['user'] = $fetch['user_id'];
-	$password = $fetch['password'];
+		$logType = $fetch['login_type'];
+		$_SESSION['user'] = $fetch['user_id'];
+		$password = $fetch['password'];
+
 if($count==1)
 {
-
-	if($radio2 == 1 && $radio1 == $radio2)
+	if($logType == 1 && $radio1 == $logType)
 	{	
 		
 		header("Location:dashboard.php");
 		$getStatus = mysqli_query($connect, "UPDATE usertable SET status=1 WHERE user_id=".$_SESSION['user']);
 		
 	}
-	elseif($radio == 0  && $radio1 == $radio2)
+	elseif($logType == 0 && $radio1 == $logType)
 	{
 		header("Location:userIndex.php");
 		$getStatus = mysqli_query($connect, "UPDATE usertable SET status=1 WHERE user_id=".$_SESSION['user']);
 	}
 	else
-		header("Location:index.php?failed = done");
+		header("Location:logout.php?user=$user");
 }
 else
 	header("Location:index.php?failed = done");
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -125,7 +119,7 @@ else
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="pass">Password</label>
-			                        	<input type="text" name="pass" placeholder="Password..." class="form-last-name form-control" id="form-last-name">
+			                        	<input type="password" name="pass" placeholder="Password..." class="form-last-name form-control" id="form-last-name">
 			                        </div>
 			                        <div class="form-group">
 										<center><input type="radio" name="radio" id='admin' value="1">&nbsp;&nbsp;<span style='color:#47add5'><label for='admin'>Admin</label></span>

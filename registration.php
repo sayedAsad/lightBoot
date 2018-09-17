@@ -20,7 +20,7 @@ if($pass == $repass)
 {
 $query = mysqli_query($connect,"INSERT INTO usertable (user_id, name, last_name, job_title, username, password, re_pass,
 											  email, profile_pic,status) 
-								   VALUES (NULL, '$name', '$lname', '$job', '$email', '$dir', '$username', '$pass', '$repass',0)");
+								   VALUES (NULL, '$name', '$lname', '$job', '$username' , '$pass', '$repass','$email', '$dir',0)");
 if($query)
 	header("Location:registration.php?success=done");
 else
@@ -137,11 +137,11 @@ else
 			                        </div>
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="pass">Password</label>
-			                        	<input type="text" name="pass" placeholder="Password..." class="form-first-name form-control" id="form-first-name">
+			                        	<input type="password" name="pass" placeholder="Password..." class="form-first-name form-control" id="form-first-name">
 			                        </div>
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="repass">Re-enter password</label>
-			                        	<input type="text" name="repass" placeholder="Re-enter password..." class="form-first-name form-control" id="form-first-name">
+			                        	<input type="password" name="repass" placeholder="Re-enter password..." class="form-first-name form-control" id="form-first-name">
 			                        </div>
 									
 			                        <button type="submit" class="btn">Give it to me!</button>

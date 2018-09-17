@@ -1,7 +1,5 @@
 <?php
 
-$user = $_SESSION['userID'];
-
 echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.jpg'>
 
     	<div class='sidebar-wrapper'>
@@ -23,7 +21,7 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 					}
 					echo "'>
                     
-					<a href='dashboard.php?user=$user'>
+					<a href='dashboard.php'>
                         <i class='pe-7s-graph'></i>
                         <p>Dashboard</p>
                     </a>
@@ -39,7 +37,7 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='userview.php?user=$user'>
+                    <a href='userview.php'>
                         <i class='pe-7s-user'></i>
                         <p>User Profile</p>
                     </a>
@@ -55,7 +53,7 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='pages.php?user=$user'>
+                    <a href='pages.php'>
                         <i class='pe-7s-note2'></i>
                         <p>Pages</p>
                     </a>
@@ -71,7 +69,7 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='postview.php?user=$user'>
+                    <a href='postview.php'>
                         <i class='pe-7s-news-paper'></i>
                         <p>Posts</p>
                     </a>
@@ -86,7 +84,7 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='message.php?user=$user'>
+                    <a href='message.php'>
                         <i class='pe-7s-bell'></i>
                         <p>Messages</p>
                     </a>
@@ -102,7 +100,7 @@ echo "<div class='sidebar' data-color='purple' data-image='assets/img/sidebar-5.
 						echo '';
 					}
 					echo "'>
-                    <a href='categoryList.php?user=$user'>
+                    <a href='categoryList.php'>
                         <i class='pe-7s-science'></i>
                         <p>Category</p>
                     </a>

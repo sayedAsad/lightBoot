@@ -56,7 +56,7 @@ if(isset($_POST['title']))
 
 
 //Joined tables to get the required information.
-$pQuery = "SELECT * FROM posts INNER JOIN usertable ON posts.user_id = usertable.user_id iNNER JOIN category ON posts.category = category.cat_id WHERE posts.status=1";
+$pQuery = "SELECT * FROM posts INNER JOIN usertable ON posts.user_id = usertable.user_id iNNER JOIN category ON posts.category = category.cat_id WHERE posts.pStatus=1";
 $res = mysqli_query($connect,$pQuery);
 $pfetch = mysqli_fetch_assoc($res);
 	

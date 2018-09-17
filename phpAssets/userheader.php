@@ -1,6 +1,7 @@
 
 <?php
 
+
 echo	"<header class='site-header'>
 			<div class='container'>
 				<div class='row'>
@@ -13,7 +14,7 @@ echo	"<header class='site-header'>
 						<nav class='site-navigation'>
 
 							<ul class='flex-lg flex-lg-row justify-content-lg-center align-content-lg-center'>
-								<li class='current-menu-item'><a href='userIndex.php?user=$user'>";
+								<li class='current-menu-item'><a href='userIndex.php'>";
 								if($active=='userIndex')
 								{
 									echo "<span style='color:#3B5998'>Home</span>";
@@ -24,7 +25,7 @@ echo	"<header class='site-header'>
 								}
 								echo "</a></li>
 								
-								<li><a href='about.php?user=$user'>";
+								<li><a href='about.php'>";
 								
 								if($active=='about')
 								{
@@ -36,7 +37,7 @@ echo	"<header class='site-header'>
 								}
 								echo "</a></li>
 								
-								<li><a href='contact.php?user=$user'>";
+								<li><a href='contact.php'>";
 								if($active=='contact')
 								{
 									echo "<span style='color:#0067a7'>contact</span>";
